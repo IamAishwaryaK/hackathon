@@ -48,7 +48,7 @@ public class Mock {
 		               
 				   	if(Double.parseDouble(words[3])>max)
 				   		max=Double.parseDouble(words[3]);
-				   	values.put(count+"s",words[3]);
+				   	values.put(count+"s",Double.parseDouble(words[3]));
 		}
 		// maximum=(JSONObject)max;
 		
