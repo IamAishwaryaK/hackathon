@@ -8,37 +8,31 @@ public class Mock
 	
 	public static void readfromfile()
 	{
-	  
-		try
-		{
-			long sum=0;
-			double avg,max=0;
-			long count=0;
-			long value=0;
-		JSONObject json=new JSONObject();
-	    JSONObject memory = new JSONObject();
-	    JSONObject values = new JSONObject();
-        String fileName = "C:\\Users\\Aishwarya\\Documents\\memory.txt";
-		File file = new File(fileName);
-		FileReader fr = new FileReader(file);
-		BufferedReader br = new BufferedReader(fr);
-		String[] memoryvalues;
-		String line;
-		
-		
-		while((line = br.readLine()) != null){
-			 memoryvalues=line.split("   ");
-			 
+	  try{
 			
-			 
-		    
-			 if(Long.parseLong(memoryvalues[1])!=value)
+		  long sum=0;
+		  double avg,max=0;
+		  long count=0;
+		  long value=0;
+		  JSONObject json=new JSONObject();
+	          JSONObject memory = new JSONObject();
+	          JSONObject values = new JSONObject();
+                  String fileName = "C:\\Users\\Aishwarya\\Documents\\memory.txt";
+		  File file = new File(fileName);
+		  FileReader fr = new FileReader(file);
+		  BufferedReader br = new BufferedReader(fr);
+		  String[] memoryvalues;
+		  String line;
+		  while((line = br.readLine()) != null)
+		   {
+		    memoryvalues=line.split("   ");
+			  if(Long.parseLong(memoryvalues[1])!=value)
 			 {
 				   count++;
 				   sum= sum+Long.parseLong(memoryvalues[1]);
 				   System.out.println(memoryvalues[1]);
-			       values.put(count+"s",memoryvalues[1]);
-			       value=Long.parseLong(memoryvalues[1]);
+			           values.put(count+"s",memoryvalues[1]);
+			          value=Long.parseLong(memoryvalues[1]);
 			       
 			 }
 			 
@@ -48,7 +42,7 @@ public class Mock
 			 }
 			
 			   
-		}
+		    }
 		 
 		avg=sum/count;
 		max=(max/1024);
@@ -59,13 +53,13 @@ public class Mock
 		avg=(double)Math.round(avg*100)/100;
 		System.out.println(avg);
 		br.close();
-	     Double average=new Double(avg);
-	     Double maximum=new Double(max);
+	        Double average=new Double(avg);
+	        Double maximum=new Double(max);
 		Object Sample="Sample";
 		json.put("Usecasename", Sample);
 		json.put("Values:", values);
-        json.put("Averagememory(MB)", average);
-        json.put("Maximummemory(MB)", maximum);
+                json.put("Averagememory(MB)", average);
+                 json.put("Maximummemory(MB)", maximum);
 		FileWriter file1 = new FileWriter("C:\\Users\\Aishwarya\\Documents\\hackathonmemory.json");
 			 
         file1.write(json.toJSONString());
